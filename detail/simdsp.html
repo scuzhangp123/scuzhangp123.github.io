@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+<title>simDSP</title>
+<link rel="stylesheet" type="text/css" href="../css/detail.css">
+</head>
+<body>
+<div class="head">
+	<div id="home"><a href="../resume.html">Home</a></div>
+</div>
+<div class="main">
+	<div class="content">
+		<div class="title">	Mining Similarity-Aware Distinguishing Sequential Patterns from Biomedical Sequences</div>
+		<div class="subtitle">基于相似敏感的对比序列挖掘</div>
+		<div>
+			<span class="highlight hred">Distinguishing sequential pattern</span>
+			<span class="highlight hred">Biomedical Sequence</span>
+			<span class="highlight hred">Spam Message</span>
+			<span class="highlight hblue">Follow-Set</span>
+			<span class="highlight hblue">Hybrid Search</span>
+			<span class="highlight hblue">Trie</span>
+		</div>
+		<div><hr></hr></div>
+		<div class="intro">
+			<div class="part">Introduce</div>
+			<div>
+				Distinguishing sequential pattern (DSP) mining, a specific type of contrast data
+				mining [1], extracting sequential patterns showing the discrimination between
+				two datasets, has attracted considerable attention in many fields. DSP mining
+				aims to discover the patterns that occur frequently in one class and infrequently
+				in sequences of another class. DSP mining has been proven to be explainable and
+				efficient on a two classes comparison [2], such as building accurate classifiers [3],
+				detecting anomaly [4] and analyzing biological sequential data [5].
+			</div>
+			<div class="im"><img src="img/toy.png"></div>
+			<div>
+				We want to analyze the purchasing behavior between young customers and senior customers in the shopping transactions, listed in Table 2. In
+				our common sense, the products headphone, bluetooth and earphone are similar
+				products. If we regard them as the same product, we may get the DSP patterns
+				like <span class="bold">< phone, earphone ></span>. We can discover that young customers prefer buying
+				the product earphone after purchasing phone compared with senior customers.
+				If we match the pattern item by item, we cannot find this phenomenon. Besides, there are many situations in biology that require to consider the similarity
+				between items, such as amino acids have similar property in protein.
+			</div>
+			<div class="part">Method</div>
+			<div class="im"><img src="img/tree1.png"></div>
+			<div>
+				we design an efficient algorithm
+				to discover simDSPs with follow set which we only need to consider some quality
+				candidate patterns rather than enumerate all candidate patterns.
+			</div>
+
+			<div class="im"><img src="img/tree2.png"></div>
+			<div>
+				As stated above, the advantage of candidate-generationand-test approach is high efficiency. However, the memory
+				cost is huge, since many temporary results have to be stored.
+				Thus, the candidate-generation-and-test approach is unsuitable
+				for very large data sets. To overcome this challenges, we
+				propose a hybrid search strategy (a combination of breadthfirst search and depth-first search). Specifically, simDSP-Miner
+				firstly performs the breadth-first strategy to generate candidate
+				patterns using pre-defined amount of memory, then performs
+				the depth-first strategy to continue the remaining search.
+			</div>
+			<div class="part">Result</div>
+			<div class="im"><img src="img/spam.png"></div>
+			<div>
+				SMS spam is an important topic in our life. The dataset of SMS (from <a href="http://archive.ics.uci.edu/ml/datasets/SMS+Spam+Collection" target="_blank">UCI</a>) is different
+				from other text sequences because it is messy. In our experiments, we use spam messages as
+				positive sequences D+ and ham messages as negative sequences D−. The preprocess of data likes Bible. Something different is that we replace all digit with
+				symbol “$” and save the sequences whose length are no less than ten. Table 6
+				gives a part of mining results. From the observation in table, there is some difference from the result in Bible experiment because of the messy data of spam
+				which has many spelling mistakes. The mining simDSP is interesting. For example, the pattern <span class="bold">< {rply, reply}, { $ } ></span> where the words “rply” and “reply” are
+				similar. According to our exprience, they have the same meaning. If we do not
+				consider the similarity between them, the pattern <span class="bold">< {rply, reply}, { $ } ></span> cannot
+				be discovered. The same situation exists in pattern <span class="bold">< {free, 5free}, {calls, calls1, call} ></span> due to the messy text in spam data, or the trick in spam messages for
+				escaping from being filtered by message service.
+			</div>
+			<div class="part">Refference</div>
+			<div>1. Dong, G., Bailey, J., eds.: Contrast Data Mining: Concepts, Algorithms, and Applications. CRC Press (2012)</div>
+			<div>2. Dong, G., Li, J.: Efficient mining of emerging patterns: Discovering trends and differences. In: Proceedings of the Fifth ACM SIGKDD International Conference on Knowledge Discovery and Data Mining. (1999) 43–52</div>
+			<div>3. Shah, C.C., Zhu, X., Khoshgoftaar, T.M., Beyer, J.: Contrast pattern mining with gap constraints for peptide folding prediction. In: Proceedings of the 21st International Florida Artificial Intelligence Research Society Conference. (2008) 95–100</div>
+			<div>4. She, R., Chen, F., Wang, K., Ester, M., Gardy, J.L., Brinkman, F.S.: Frequentsubsequence-based prediction of outer membrane proteins. In: Proceedings of the 9th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining, ACM (2003) 436–445</div>
+			<div>5. Durbin, R., Eddy, S.R., Krogh, A., Mitchison, G.J.: Biological Sequence Analysis: Probabilistic Models of Proteins and Nucleic Acids. Cambridge University Press (1998)</div>
+		</div>
+	</div>
+	<div>By Tinghai, pthaike@gmail.com</div>
+</div>
+</body>
+</html>
